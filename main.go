@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
@@ -33,10 +34,21 @@ func main() {
 
 	app.Static("/static", "./static")
 	routes.GetIndex(app)
+	routes.GetSignIn(app)
+	routes.GetGetStarted(app)
 	routes.GetNotFound(app)
+
+	app.Post("/click", func(c *fiber.Ctx) error {
+		route := "partials/click"
+
+		return c.Render(route, nil)
+	})
 
 	err := app.Listen(":3000")
 	if err != nil {
+		_ = fmt.Errorf("error: %v", err)
 		return
 	}
 }
+
+// TODO: Modify CSS to shorter classes names

@@ -1,0 +1,29 @@
+{
+  "name": "go-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "esbuild --bundle --minify --sourcemap  --platform=browser --tsconfig=scripts/tsconfig.json --legal-comments=none --outfile=static/js/main.js scripts/main.ts",
+    "build:css": "sass --style=compressed --no-source-map --update styles/main.sass:static/css/main.css",
+    "build:server": "go build -o bin/server",
+    "build": "rm -rf bin/ && npm run build:js && npm run build:css && npm run build:server && cp -r static/ bin/static && cp -r templates/ bin/templates",
+    "dev:js": "esbuild --bundle --minify --sourcemap  --platform=browser --tsconfig=scripts/tsconfig.json --legal-comments=none --outfile=static/js/main.js scripts/main.ts --watch",
+    "dev:css": "sass --style=compressed --no-source-map --update styles/main.sass:static/css/main.css --watch",
+    "dev:server": "go run main.go",
+    "dev": "concurrently -n ESBUILD,SASS -c yellow,magenta \"npm run dev:js\" \"npm run dev:css\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "8.2.2",
+    "esbuild": "0.19.5",
+    "prettier": "3.0.3",
+    "sass": "1.69.5",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "htmx.org": "1.9.6",
+    "lit": "3.0.0"
+  }
+}

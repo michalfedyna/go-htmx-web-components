@@ -1,0 +1,37 @@
+$font-family: 'Lexend Deca', sans-serif
+$bg-light: #f5f5f5
+$bg-dark: #1a1a1a
+
+@font-face
+  font-family: 'Lexend Deca'
+  src: url('/static/fonts/LexendDeca.ttf') format('truetype')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html, body, main
+  height: 100vh
+  width: 100vw
+  font-family: $font-family
+  background-color: $bg-light
+
+.flex
+  display: flex
+
+.flex-center
+  justify-content: center
+  align-items: center
+
+.flex-column
+  flex-direction: column
+
+.flex-row
+  flex-direction: row
+
+.background-dark
+  background-color: $bg-dark
+
+.background-light
+  background-color: $bg-light

@@ -1,3 +1,4 @@
 {{template "partials/header" .}}
+<h1 hx-post="/click" hx-trigger="click" hx-target="#clickTarget" hx-swap="outerHTML">Click me!</h1>
+<div id="clickTarget"></div>
 
-{{template "partials/footer" .}}
